@@ -1,5 +1,6 @@
 'use strict';
-const AuthModule = require('../facebook/AuthModule');
+const AuthModule = require('../services/AuthModule');
+const Facebook   = require('../facebook/facebookAuth');
 const TokenService = require('../services/TokenService');
 
 module.exports = {
@@ -15,9 +16,12 @@ function facebookAuth(req, res, next) {
         redirectUri: req.body.redirectUri
     };
 
-    AuthModule.facebookAuthentication(options, (err, response) => {
-        if(err) return next({err, status: 401});
-
+    Facebook.facebookAuthentication(options, (err, response) => {
+        if(err){
+            console.log("Error facebook Autentication authcontroller");
+            return next({err, status: 401});
+        }
+        console.log("ser authObject autentication controntroller");
         // for larger apps recommended to namespace req variables
         req.authObject = response;
 
@@ -26,16 +30,22 @@ function facebookAuth(req, res, next) {
 }
 
 function retrieveUser(req, res, next) {
-    if(!req.authObject) return next({status: 401, err: 'User not found'});
-
+    if(!req.authObject) {
+        console.log("No hay Auth object en aut controller");
+        return next({status: 401, err: 'User not found'});
+    }
+    console.log("hay auth object continuando ...");
     const userToRetrieve = {
         user: req.authObject.user,
         type: req.authObject.type
     };
 
     AuthModule.createOrRetrieveUser(userToRetrieve, (err, user) => {
-        if(err || !user) return next({status: 401, err: 'Error while fetching user'});
-
+        if (err || !user) {
+            console.log("Error createOrRetrieve user auth controller")
+            return next({status: 401, err: 'Error while fetching user'});
+        }
+        console.log("req.user en authcontroller " + JSON.stringify(user));
         req.user = user;
 
         next();
@@ -43,11 +53,15 @@ function retrieveUser(req, res, next) {
 }
 
 function generateToken(req, res, next) {
+    console.log("generando token en auth controller");
     TokenService.createToken({user: req.user}, (err, token) => {
-        if(err) return next({status: 401, err: 'User Validation failed'});
+        if(err){
+            console.log("error generando token en auth controller");
+            return next({status: 401, err: 'User Validation failed'});
+        }
 
+        console.log("token generada en auth controller " + token);
         req.genertedToken = token;
-
         next();
     });
 }

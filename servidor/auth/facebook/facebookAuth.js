@@ -1,11 +1,8 @@
 'use strict';
 const request   = require('request');
-const jwt       = require('jsonwebtoken');
-const User      = require('../../models/Usuario');
 
 module.exports = {
-    facebookAuthentication,
-    createOrRetrieveUser
+    facebookAuthentication
 };
 
 /**
@@ -52,40 +49,4 @@ function facebookAuthentication(options, cb) {
             cb(null, {type:'facebook', user});
         });
     });
-}
-
-/**
- * Este metodo es responsable de obtener el usuario
- * si no se encuentra ninguno con las credenciales especificadas,
- * se crea un nuevo usuario.
- * @param options
- * @param cb
- */
-
-function createOrRetrieveUser(options, cb) {
-    // select the query object based on the auth type
-    const query = {
-        [`profiles.${options.type}`]: options.user.profiles[options.type]
-    };
-
-    User.findOne(query, (err, user) => {
-        if(err) return cb('Error fetching user');
-
-        // User found, return him to the callback
-        if(user) return cb(null, user);
-
-        // No user is found, create new user
-        createUser(options.user, cb);
-    });
-}
-
-/**
- * Saves new user with data passed from profiles
- * @param user
- * @param cb
- */
-function createUser(user, cb) {
-    const newUser = new User(user);
-
-    newUser.save(cb);
 }
