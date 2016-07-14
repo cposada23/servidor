@@ -5,7 +5,7 @@
   "main": "servidor/app.js",
   "scripts": {
     "start": "node servidor/app.js",
-    "postinstall": "bower install",
+    "postinstall": "npm install bower && bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
