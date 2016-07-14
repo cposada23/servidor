@@ -20,20 +20,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-              <folding>
-                <marker date="1468461108464" expanded="true" signature="157:257" ph="{&quot;start&quot;: &quot;node servidor/app.js&quot;...}" />
-                <marker date="1468461108464" expanded="true" signature="273:315" ph="[...]" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/servidor/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -138,7 +135,6 @@
         <option value="$PROJECT_DIR$/servidor/config/AuthModule.js" />
         <option value="$PROJECT_DIR$/servidor/auth/facebook/AuthModule.js" />
         <option value="$PROJECT_DIR$/servidor/auth/controllers/auth.ctrl.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/servidor/public/index.html" />
         <option value="$PROJECT_DIR$/.bowerrc" />
         <option value="$PROJECT_DIR$/servidor/config/environment/index.js" />
@@ -148,6 +144,7 @@
         <option value="$PROJECT_DIR$/servidor/config/express.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/servidor/app.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -368,12 +365,12 @@
       <option name="presentableId" value="Default" />
       <updated>1468433466863</updated>
       <workItem from="1468433468391" duration="7755000" />
-      <workItem from="1468443688141" duration="16612000" />
+      <workItem from="1468443688141" duration="16851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24367000" />
+    <option name="totallyTimeSpent" value="24606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -425,10 +422,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding>
-            <marker date="1468461108464" expanded="true" signature="157:257" ph="{&quot;start&quot;: &quot;node servidor/app.js&quot;...}" />
-            <marker date="1468461108464" expanded="true" signature="273:315" ph="[...]" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -520,17 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <marker date="1468461108464" expanded="true" signature="157:257" ph="{&quot;start&quot;: &quot;node servidor/app.js&quot;...}" />
-            <marker date="1468461108464" expanded="true" signature="273:315" ph="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/servidor/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -607,6 +590,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding />
         </state>
       </provider>
