@@ -5,14 +5,10 @@
  */
 const express       = require('express');
 const compression   = require('compression');
-const bodyParser    = require('body-parser');
-const logger        = require('morgan');
-const errorHandler  = require('errorhandler');
-const lusca         = require('lusca');
 const dotenv        = require('dotenv');
 const path          = require('path');
 const mongoose      = require('mongoose');
-const cors          = require('cors');
+
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -22,8 +18,8 @@ dotenv.load({ path: 'servidor/.env' });
 /**
  * Load app modules and routes
  */
+const config        = require('./config/environment');
 const AuthModule    = require('./auth/facebook/AuthModule');
-const TokenService  = require('./auth/services/TokenService');
 const authCtrl      = require('./auth/controllers/auth.ctrl');
 
 /**
@@ -34,51 +30,15 @@ const app = express();
 /**
  * Connect to MongoDB.
  */
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, config.mongo.options);
 mongoose.connection.on('error', () => {
     console.error('MongoDB Connection Error.');
-    process.exit(1);
 });
 
 /**
  * Express configuration.
  */
-app.set('port', process.env.PORT || 3000);
-app.use(compression());
-app.use(logger('dev'));
-app.use(cors({
-    origin: '*',
-    withCredentials: false,
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin' ]
-}));
-
-/**
- * Init body and cookie inside req
- * */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
-/**
- * Token deserialization,
- * here we will check for token existence and extract the user payload
- * We will use the payload on other routes down the request pipeline
- */
-app.use((req, res, next) => {
-    const token = new TokenService(req.headers);
-
-    req.isAuthenticated = token.isAuthenticated;
-    req.tokenPayload    = token.getPayload();
-    req.user            = {
-        _id: req.tokenPayload._id
-    };
-
-    next();
-});
-
-app.use(lusca.xframe('SAMEORIGIN'));
-app.use(lusca.xssProtection(true));
-app.use(express.static(path.join(__dirname, 'public')));
-
+require('./config/express')(app);
 
 /**
  * Endpoints.
@@ -95,7 +55,6 @@ app.post('/auth/facebook',
     });
 
 
-app.use(errorHandler());
 
 /**
  * Start Express server.
