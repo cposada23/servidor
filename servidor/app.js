@@ -13,7 +13,7 @@ const mongoose      = require('mongoose');
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: 'servidor/.env' });
+//dotenv.load({ path: 'servidor/.env' });
 
 /**
  * Load app modules and routes

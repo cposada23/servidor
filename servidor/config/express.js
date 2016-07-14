@@ -52,9 +52,9 @@ module.exports = function (app) {
         next();
     });
 
-
+/*
     app.use(lusca.xframe('SAMEORIGIN'));
-    app.use(lusca.xssProtection(true));
+    app.use(lusca.xssProtection(true));*/
 
     /**
      * directorios estaticos
