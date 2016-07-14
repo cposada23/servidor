@@ -1,0 +1,33 @@
+{
+  "name": "jwt-auth-para-web-y-ionic",
+  "version": "0.0.1",
+  "description": "loggin por medio de Oauth y jwt",
+  "main": "servidor/app.js",
+  "scripts": {
+    "start": "node servidor/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jwt",
+    "node",
+    "express"
+  ],
+  "author": "Camilo Posada Angel",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.0",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.7.1",
+    "dotenv": "^2.0.0",
+    "errorhandler": "^1.4.3",
+    "express": "^4.14.0",
+    "express-validator": "^2.20.8",
+    "jsonwebtoken": "^7.1.3",
+    "lusca": "^1.4.1",
+    "mongoose": "^4.5.4",
+    "morgan": "^1.7.0",
+    "request": "^2.73.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "jwt-auth-para-web-y-ionic",
+  "description": "loggin por medio de Oauth y jwt",
+  "main": "app.js",
+  "authors": [
+    "Camilo Posada Angel"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "jwt",
+    "node",
+    "express"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
