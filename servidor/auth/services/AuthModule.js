@@ -25,7 +25,10 @@ function createOrRetrieveUser(options, cb) {
     };
 
     User.findOne(query1, (err, user)=>{
-        if(err)console.log("error en query 1");
+        if(err){
+            console.log("error en query 1");
+            return cb('Error fetching user');
+        }
         if(user) {
             console.log("Usuario",JSON.stringify(user));
             if(user.profiles.hasOwnProperty(options.type)) {

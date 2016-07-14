@@ -1,13 +1,32 @@
 'use strict';
 const AuthModule = require('../services/AuthModule');
 const Facebook   = require('../facebook/facebookAuth');
+const Local      = require('../local/localAuth');
 const TokenService = require('../services/TokenService');
 
 module.exports = {
     facebookAuth,
+    localAuth,
     retrieveUser,
     generateToken
 };
+
+function localAuth(req, res, next) {
+    const options = {
+        password: req.body.password,
+        email: req.body.email
+    };
+    console.log("Options en localAuth " + JSON.stringify(options));
+    Local.localAuthentication(options, (err, user)=>{
+        if(err || !user){
+            console.log("error en autcontrolerr local authentication");
+            return next({status: 401, err: 'User not found'});
+        }
+        req.user = user;
+
+        next();
+    })
+}
 
 function facebookAuth(req, res, next) {
     const options = {
@@ -61,7 +80,7 @@ function generateToken(req, res, next) {
         }
 
         console.log("token generada en auth controller " + token);
-        req.genertedToken = token;
+        req.generatedToken = token;
         next();
     });
 }
