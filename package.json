@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "loggin por medio de Oauth y jwt",
   "main": "servidor/app.js",
-  "cacheDirectories":["bower_components"],
+  "cacheDirectories": [
+    "bower_components "
+  ],
   "scripts": {
     "start": "node servidor/app.js",
-    "postinstall": "npm install bower && bower install",
+    "postinstall": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -19,6 +21,7 @@
   "dependencies": {
     "async": "^2.0.0",
     "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.7.1",
