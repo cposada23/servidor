@@ -59,7 +59,7 @@ module.exports = function (app) {
     /**
      * directorios estaticos
      */
-    app.use('/public', express.static(path.join(config.root, 'public')));
+    app.use('/public', express.static(path.join(config.root, '/public')));
     app.use('/bower_components', express.static(path.join(config.root,'/bower_components')));
     app.use(errorHandler());
 

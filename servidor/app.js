@@ -39,20 +39,20 @@ mongoose.connection.on('error', () => {
  * Express configuration.
  */
 require('./config/express')(app);
-
 /**
- * Endpoints.
+ * routes
  */
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '/public/index.html'));
-});
+require('./endPoints/routes')(app);
 
 
 
+
+/*
 app.post('/auth/facebook',
     authCtrl.facebookAuth, authCtrl.retrieveUser, authCtrl.generateToken, (req, res) => {
         res.json({token: req.genertedToken});
     });
+*/
 
 
 
