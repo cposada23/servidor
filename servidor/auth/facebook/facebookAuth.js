@@ -27,11 +27,17 @@ function facebookAuthentication(options, cb) {
 
     // Step 1. Exchange authorization code for access token.
     request.get({url: accessTokenUrl, qs: params, json: true}, (err, response, accessToken) => {
-        if(response.statusCode !== 200) return cb(accessToken.error.message);
+        if(response.statusCode !== 200) {
+            console.log("error linea 31 facebok atuh");
+            return cb(accessToken.error.message);
+        }
 
         // Step 2. Retrieve profile information about the current user.
         request.get({url: graphApiUrl, qs: accessToken, json: true}, (err, response, profile) => {
-            if(response.statusCode !== 200) return cb(accessToken.error.message);
+            if(response.statusCode !== 200){
+                console.log("error linea 38 facebook auth");
+                return cb(accessToken.error.message);
+            }
 
             // Here we will normalize facebook response to our user schema
             // So later we can use multiple providers

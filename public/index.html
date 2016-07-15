@@ -3,8 +3,10 @@
 <head>
     <title>Passalo</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.css">
+    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.buttons.css">
 </head>
-<body>
+<body ng-app="passalo">
     <div class ="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #00b3ee">Div 1</div>
 
@@ -34,7 +36,29 @@
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #004f07">Div 3</div>
     </div>
 
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <div ui-view></div>
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/satellizer/satellizer.min.js"></script>
+    <script src="bower_components/pnotify/dist/pnotify.js"></script>
+    <script src="bower_components/pnotify/dist/pnotify.confirm.js"></script>
+    <script src="bower_components/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
+
+
+
+    <!--                                          APP                                           -->
+    <script type="text/javascript" src="/public/app/app.js"></script>
+        <!--                 Auth            -->
+            <!--     Controllers Auth -->
+                <script type="text/javascript" src="/public/app/auth/login/loginCtrl.js"></script>
+            <!--     Services Auth    -->
+                <script type="text/javascript" src="/public/app/services/userService.js"></script>
+        <!--               fin Auth          -->
+
 </body>
 </html>
