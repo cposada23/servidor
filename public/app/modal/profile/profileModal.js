@@ -9,7 +9,8 @@
             $scope.helloMessage = "Hello, world!";
 
             $scope.cancel = function() {
-                $uibModalInstance.close('hola');
+                $uibModalInstance.close('hola modal' +
+                    '');
             }
 
         }

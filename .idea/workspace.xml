@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="335f3fe1-20e0-4f4d-9435-cdcc9dc9bec9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/servidor/app.js" afterPath="$PROJECT_DIR$/servidor/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/servidor/config/express.js" afterPath="$PROJECT_DIR$/servidor/config/express.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/modal/profile/profileModal.js" afterPath="$PROJECT_DIR$/public/app/modal/profile/profileModal.js" />
     </list>
     <ignored path="facebookLogin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="181">
               <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profileModal.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/app/modal/profile/profileModal.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -114,16 +123,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="singupCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/auth/singup/singupCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="29" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -147,7 +146,6 @@
         <option value="$PROJECT_DIR$/servidor/auth/facebook/AuthModule.js" />
         <option value="$PROJECT_DIR$/servidor/auth/services/AuthModule.js" />
         <option value="$PROJECT_DIR$/public/app/modal/profile/profileModal.html" />
-        <option value="$PROJECT_DIR$/public/app/modal/profile/profileModal.js" />
         <option value="$PROJECT_DIR$/servidor/auth/local/localAuth.js" />
         <option value="$PROJECT_DIR$/servidor/auth/controllers/auth.ctrl.js" />
         <option value="$PROJECT_DIR$/public/app/auth/singup/sigup.html" />
@@ -174,6 +172,7 @@
         <option value="$PROJECT_DIR$/servidor/.env" />
         <option value="$PROJECT_DIR$/servidor/app.js" />
         <option value="$PROJECT_DIR$/servidor/config/express.js" />
+        <option value="$PROJECT_DIR$/public/app/modal/profile/profileModal.js" />
       </list>
     </option>
   </component>
@@ -694,12 +693,12 @@
       <workItem from="1468530135269" duration="13834000" />
       <workItem from="1468596121018" duration="1566000" />
       <workItem from="1468598227987" duration="46000" />
-      <workItem from="1468598353567" duration="20897000" />
+      <workItem from="1468598353567" duration="21244000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79528000" />
+    <option name="totallyTimeSpent" value="79875000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -955,14 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/modal/profile/profileModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="60" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1123,6 +1114,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/modal/profile/profileModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
           <folding />
         </state>
       </provider>
