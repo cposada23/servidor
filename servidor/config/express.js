@@ -21,6 +21,7 @@ module.exports = function (app) {
 
 
     app.set('port', process.env.PORT || 3000);
+
     app.use(compression());
     app.use(logger('dev'));
     app.use(cors({
@@ -34,6 +35,18 @@ module.exports = function (app) {
      * */
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
+
+
+    /**
+     * Forzar HTTPS  en heroku
+     */
+    if(proccess.env.HEROKU === 'heroku'){
+        app.use(function(req, res, next) {
+            var protocol = req.get('x-forwarded-proto');
+            protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
+        });
+    }
+
 
     /**
      * Token deserialization,

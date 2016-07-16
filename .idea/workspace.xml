@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="335f3fe1-20e0-4f4d-9435-cdcc9dc9bec9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/app.js" afterPath="$PROJECT_DIR$/public/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/servidor/app.js" afterPath="$PROJECT_DIR$/servidor/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/servidor/config/express.js" afterPath="$PROJECT_DIR$/servidor/config/express.js" />
     </list>
     <ignored path="facebookLogin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +27,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/servidor/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+            <state relative-caret-position="85">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -36,8 +37,18 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state relative-caret-position="181">
+              <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="express.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/servidor/config/express.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -68,16 +79,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/home/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -143,7 +144,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/servidor/endPoints/routes.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/servidor/.env" />
         <option value="$PROJECT_DIR$/servidor/auth/facebook/AuthModule.js" />
         <option value="$PROJECT_DIR$/servidor/auth/services/AuthModule.js" />
         <option value="$PROJECT_DIR$/public/app/modal/profile/profileModal.html" />
@@ -152,7 +152,6 @@
         <option value="$PROJECT_DIR$/servidor/auth/controllers/auth.ctrl.js" />
         <option value="$PROJECT_DIR$/public/app/auth/singup/sigup.html" />
         <option value="$PROJECT_DIR$/public/app/directives/passwordMatch.js" />
-        <option value="$PROJECT_DIR$/servidor/config/express.js" />
         <option value="$PROJECT_DIR$/servidor/auth/index.js" />
         <option value="$PROJECT_DIR$/public/app/auth/singup/singup.html" />
         <option value="$PROJECT_DIR$/public/app/css/main.css" />
@@ -170,9 +169,11 @@
         <option value="$PROJECT_DIR$/public/app/auth/modals/singup/singupModalCtrl.js" />
         <option value="$PROJECT_DIR$/public/app/home/homeCtrl.js" />
         <option value="$PROJECT_DIR$/public/app/auth/modals/singup/singupModal.html" />
-        <option value="$PROJECT_DIR$/servidor/app.js" />
         <option value="$PROJECT_DIR$/public/app/auth/modals/login/lognModalCtrl.js" />
         <option value="$PROJECT_DIR$/public/app/app.js" />
+        <option value="$PROJECT_DIR$/servidor/.env" />
+        <option value="$PROJECT_DIR$/servidor/app.js" />
+        <option value="$PROJECT_DIR$/servidor/config/express.js" />
       </list>
     </option>
   </component>
@@ -261,24 +262,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="facebookLogin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="facebookLogin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="servidor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endPoints" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -711,12 +694,12 @@
       <workItem from="1468530135269" duration="13834000" />
       <workItem from="1468596121018" duration="1566000" />
       <workItem from="1468598227987" duration="46000" />
-      <workItem from="1468598353567" duration="19959000" />
+      <workItem from="1468598353567" duration="20897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78590000" />
+    <option name="totallyTimeSpent" value="79528000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -932,14 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/servidor/config/express.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/servidor/endPoints/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1096,22 +1071,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/servidor/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/servidor/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/home/homeCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
@@ -1136,10 +1095,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/servidor/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/servidor/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/servidor/config/express.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        <state relative-caret-position="181">
+          <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
           <folding />
         </state>
       </provider>
