@@ -7,10 +7,18 @@ const TokenService = require('../services/TokenService');
 module.exports = {
     facebookAuth,
     localAuth,
+    localsingup,
     retrieveUser,
     generateToken
 };
 
+
+/**
+ * Autenticación local
+ * @param req
+ * @param res
+ * @param next
+ */
 function localAuth(req, res, next) {
     const options = {
         password: req.body.password,
@@ -28,6 +36,32 @@ function localAuth(req, res, next) {
     })
 }
 
+/**
+ * Loca Singup
+ */
+
+function localsingup(req, res,next){
+    var datos = req.body;
+    console.log("datos en auth controller local signup" +JSON.stringify(datos));
+    Local.localSingUp(datos, function (err, user) {
+        if(err || !user){
+            console.log("error en autcontrolerr localsignup");
+            return next({status: 401, err: 'User not found'});
+        }
+        req.user = user;
+
+        next();
+    });
+
+}
+
+
+/**
+ * Social auth
+ * @param req
+ * @param res
+ * @param next
+ */
 function facebookAuth(req, res, next) {
     const options = {
         code: req.body.code,

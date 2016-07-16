@@ -61,7 +61,7 @@ module.exports = function (app) {
      */
     app.use('/public', express.static(path.join(config.root, '/public')));
     app.use('/bower_components', express.static(path.join(config.root,'/bower_components')));
-    app.use('/node_modules' , express.static(path.join(config.root, '/node_modules')));
+    //app.use('/node_modules' , express.static(path.join(config.root, '/node_modules')));
     app.use(errorHandler());
 
 };

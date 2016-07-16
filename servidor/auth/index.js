@@ -2,14 +2,28 @@ const express  = require('express');
 const authCtrl = require('./controllers/auth.ctrl');
 
 const router = express.Router();
-
+/**
+ * Social auth
+ */
 router.use('/facebook' , authCtrl.facebookAuth, authCtrl.retrieveUser, authCtrl.generateToken, (req, res) => {
     console.log("Todo correcto devolviendo la token en auth index.js");
     res.json({token: req.generatedToken});
 });
 
-router.use('/login', authCtrl.localAuth , authCtrl.generateToken, (req, res)=>{
+
+/**
+ * local Auth
+ * local SingUp
+ */
+router.use('/login', authCtrl.localAuth, authCtrl.generateToken, (req, res)=>{
     res.json({token: req.generatedToken});
 });
+
+router.use('/signup', authCtrl.localsingup, authCtrl.generateToken,(req, res)=>{
+    res.json({token: req.generatedToken});
+});
+
+
+
 
 module.exports = router;

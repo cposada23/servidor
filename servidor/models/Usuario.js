@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
     pictures:[{type:String}],
     hashedPassword:String,
     salt: String,
-
+    displayName: {type: String, unique:true},
+    rol: {type:String, default:'user'},
     profiles: {
         local:{type:Boolean, default:false},
         facebook: String,

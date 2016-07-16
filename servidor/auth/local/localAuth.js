@@ -2,6 +2,7 @@ const User = require('../../models/Usuario');
 
 module.exports={
     localAuthentication,
+    localSingUp
 
 };
 function localAuthentication(options, cb) {
@@ -25,6 +26,26 @@ function localAuthentication(options, cb) {
         }
 
     });
+}
 
 
+function localSingUp(datos, cb) {
+    User.findOne({email: datos.email}, function (err, existinguser) {
+        if(err){
+            console.log("error retornando usuario en localSinngup");
+            return cb('Error fetching user');
+        }else if(existinguser){
+            console.log("ya existia un usuario con ese email");
+            return cb('El email ya esta registrado');
+        }
+        var user = new User(datos);
+        user.save(function (err, user) {
+            if(err){
+                console.log("Error guardando el usuario localsingup");
+                return callback(err);
+            }
+            return (cb(null, user));
+        });
+
+    });
 }

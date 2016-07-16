@@ -1,20 +1,16 @@
-/*(function () {
+(function () {
     angular
         .module("passalo")
-        .controller('loginCtrl', loginCtrl);
+        .controller('homeCtrl', homeCtrl);
 
-    loginCtrl.$inject = ['$rootScope','UserService', 'notificationService', 'usSpinnerService','$uibModal'];
-    function loginCtrl($rootScope, UserService, notificationService ,usSpinnerService , $uibModal) {
+    homeCtrl.$inject = ['$rootScope','UserService', 'notificationService', 'usSpinnerService','$uibModal'];
+    function homeCtrl($rootScope, UserService, notificationService ,usSpinnerService , $uibModal) {
         var vm = this;
 
         vm.loginData = {};
         vm.user = {};
         vm.logged = false;
-        vm.login = function (provider) {
-            usSpinnerService.spin('spinner-1');
-            console.log("haciendo login");
-            UserService.authenticate(provider);
-        };
+
 
         vm.logOut = function () {
             console.log("loggin out");
@@ -26,13 +22,30 @@
             var loginInstance = $uibModal.open({
                 templateUrl: '/public/app/auth/modals/login/loginModal.html',
                 controller: 'loginModalCtrl',
-                backdrop:'static'
+                //backdrop:'static'
             });
             loginInstance.result.then(function (data) {
-                console.log("data " + JSON.stringify(data));
+                console.log("data cerrrado login instance " + JSON.stringify(data));
             }, function () {
                 console.log("login rejected");
             });
+        };
+
+
+        vm.showSingup = function () {
+            console.log("abriendo signup");
+            var singupInstance = $uibModal.open({
+                templateUrl: '/public/app/auth/modals/singup/singupModal.html',
+                controller: 'singupModalCtrl',
+
+            });
+            singupInstance.result.then(function (data) {
+                console.log("cerrado singup " + JSON.stringify(data));
+
+            }, function () {
+                console.log("singup rejected");
+            });
+
         };
 
         vm.showProfile = function () {
@@ -58,17 +71,18 @@
             })
         };
 
-        vm.closeProfile = function () {
-            console.log("Close profile");
-
-        };
 
 
         $rootScope.$on('userLoggedIn', function(){
             loadUserData();
-            console.log("user logged in");
-            usSpinnerService.stop('spinner-1');
-            notificationService.success('Autenticado');
+            console.log("user logged in homectrl");
+            //usSpinnerService.stop('spinner-1');
+            notificationService.success('Autenticado homectrl');
+        });
+
+        $rootScope.$on('userSingUp', function(){
+            notificationService.success('registro correcto');
+            loadUserData();
         });
 
         $rootScope.$on('userLoggedOut', function(){
@@ -94,9 +108,9 @@
 
         function loadUserData() {
             vm.user   = UserService.getUser();
-            console.log("user: passalo " +  JSON.stringify(vm.user) );
+            console.log("user: passalo homectrl" +  JSON.stringify(vm.user) );
             vm.logged = UserService.isAuthenticated();
-            console.log("scppe.logged"+ vm.logged);
+            console.log("scppe.logged homectrl"+ vm.logged);
         }
     }
-}());*/
+}());

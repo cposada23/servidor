@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.css">
     <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.buttons.css">
+    <link rel="stylesheet" href="public/app/css/main.css">
 </head>
 <body ng-app="passalo">
     <div class ="row">
@@ -13,27 +14,6 @@
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #810f07">Div 2</div>
 
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #d1ee13">Div 3</div>
-    </div>
-    <div class ="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #0f409f">Div 1</div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #3e0905">Div 2</div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #8ba00e">Div 3</div>
-    </div>
-    <div class ="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #0f7459">Div 1</div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #810647">Div 2</div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #12575f">Div 3</div>
-    </div>
-    <div class ="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #07180f">Div 1</div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #0b0002">Div 2</div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="background-color: #004f07">Div 3</div>
     </div>
 
     <div ui-view></div>
@@ -58,13 +38,27 @@
     <script type="text/javascript" src="/public/app/app.js"></script>
         <!-- Modals -->
             <script type="text/javascript" src="/public/app/modal/profile/profileModal.js"></script>
+
         <!-- fin Modals -->
         <!--                 Auth            -->
+            <!--      Modals -->
+                <script type="text/javascript" src="/public/app/auth/modals/login/lognModalCtrl.js"></script>
+                <script type="text/javascript" src="/public/app/auth/modals/singup/singupModalCtrl.js"></script>
             <!--     Controllers Auth -->
+                <!-- Login -->
                 <script type="text/javascript" src="/public/app/auth/login/loginCtrl.js"></script>
+                <!-- sigup -->
+                <script type="text/javascript" src="/public/app/auth/singup/singupCtrl.js"></script>
             <!--     Services Auth    -->
                 <script type="text/javascript" src="/public/app/services/userService.js"></script>
+            <!--     Directives       -->
+                <script type="text/javascript" src="/public/app/directives/passwordMatch.js"></script>
         <!--               fin Auth          -->
+
+
+        <!--               HOME             -->
+            <!--  Controller        --->
+                <script type="text/javascript" src="/public/app/home/homeCtrl.js"></script>
 
 </body>
 </html>

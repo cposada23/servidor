@@ -1,8 +1,7 @@
-<h1> Hola </h1>
-
 
 <span us-spinner="{radious:30, width:8, length:16}" spinner-key="spinner-1"></span>
-<button class="btn btn-block" ng-click="login.login('facebook')" ng-hide="login.logged">Login Facebook</button>
-<button class="btn btn-block btn-danger" ng-click="login.logOut()" ng-show="login.logged">LogOut</button>
-<button class="btn btn-block btn-success" ng-click="login.showProfile()" >Open modal</button>
-<pre>{{login.user | json}}</pre>
+<button class="btn btn-block btn-danger" ng-click="home.logOut()" ng-show="home.logged">LogOut</button>
+<button class="btn btn-block btn-success" ng-click="home.showProfile()" >Open modal</button>
+<button class = "btn btn-block btn-primary" ng-click="home.showLogin()" ng-hide="home.logged">Login</button>
+<a class="btn btn-block btn-default" ng-click="home.showSingup()" ng-hide="home.logged">SingUp</a>
+<pre>{{home.user | json}}</pre>

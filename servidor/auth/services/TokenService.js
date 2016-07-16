@@ -15,6 +15,7 @@ class TokenService {
             profilePicture: options.user.profilePicture,
             firstName: options.user.firstName,
             lastName: options.user.lastName,
+            rol: options.user.rol,
             _id: options.user._id
         };
 

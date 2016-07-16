@@ -14,8 +14,13 @@
             .state('Home',{
                 url:'/home',
                 templateUrl:'public/app/home/home.html',
-                controller:'loginCtrl as login'
-        });
+                controller:'homeCtrl as home'
+            })
+            .state('SingUp',{
+                url:'/singUp',
+                templateUrl:'public/app/auth/singup/singup.html',
+                controller: 'singupCtrl as singup'
+            });
 
         var commonConfig = {
             popupOptions: {
@@ -26,13 +31,13 @@
 
         //commonConfig.redirectUri = 'http://localhost:3000/';
         commonConfig.redirectUri = window.location.origin + '/';
+
+        $authProvider.singupUrl = '/auth/signup';
         $authProvider.facebook(angular.extend({}, commonConfig, {
             clientId: '1770043263275650',
 
             //url: 'https://passalov2.herokuapp.com/auth/facebook'
             url:'http://localhost:3000/auth/facebook'
         }));
-
-
     }
 }());
