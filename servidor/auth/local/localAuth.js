@@ -37,7 +37,7 @@ function localSingUp(datos, cb) {
             return cb('Error fetching user');
         }else if(existinguser){
             console.log("ya existia un usuario con ese email");
-            return cb('El email ya esta registrado');
+            return cb([{"params": "email" , "msg": "El email ya esta registrado"}]);
         }
         var user = new User(datos);
         user.save(function (err, user) {

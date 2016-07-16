@@ -20,6 +20,11 @@
                 url:'/singUp',
                 templateUrl:'public/app/auth/singup/singup.html',
                 controller: 'singupCtrl as singup'
+            })
+            .state('Forgot',{
+                url:'/forgot',
+                templateUrl:'public/app/auth/forgot/forgot.html',
+                controller: 'forgotCtrl as forgot'
             });
 
         var commonConfig = {

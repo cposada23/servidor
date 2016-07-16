@@ -24,6 +24,8 @@ router.use('/signup', authCtrl.localsingup, authCtrl.generateToken,(req, res)=>{
 });
 
 
+router.use('/forgot', authCtrl.forgot);
+
 
 
 module.exports = router;

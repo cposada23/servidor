@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="panel">
+        <div class="panel-body">
+            <div ng-if="forgot.messages.error" role="alert" class="alert alert-danger">
+                <div ng-repeat="error in forgot.messages.error">{{error.msg}}</div>
+            </div>
+
+            <div ng-if="forgot.messages.success" role="alert" class="alert alert-success">
+                <div ng-repeat="success in forgot.messages.success">{{success.msg}}</div>
+            </div>
+            <form ng-submit="forgot.forgotPassword()">
+                <legend>Olvido la contraseña</legend>
+                <div class="form-group">
+                    <p>Entre su email y le enviaremos las instrucciones para cambiar la contraseña</p>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email" class="form-control" ng-model="forgot.user.email" autofocus>
+                </div>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>

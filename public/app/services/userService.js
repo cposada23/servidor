@@ -5,7 +5,7 @@
         .module('passalo')
         .factory('UserService', UserService);
 
-    function UserService($rootScope, $auth) {
+    function UserService($rootScope, $auth ,notificationService) {
         var userData = $auth.getPayload();
 
         return {
@@ -61,7 +61,7 @@
             },
             failedSingup: function (response) {
                 userData = undefined;
-                $rootScope.$emit('userFailedSingUp', {error: response});
+                $rootScope.$emit('userFailedSingUp', {error: response.data});
             },
             failedSocialSingup: function () {
                 userData = undefined;

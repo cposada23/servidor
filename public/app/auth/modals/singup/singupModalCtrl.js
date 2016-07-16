@@ -24,7 +24,12 @@
             $uibModalInstance.close('singup exitoso');
         });
 
-        $rootScope.$on('userFailedSingUp', function(){
+        $rootScope.$on('userFailedSingUp', function(even, data){
+            if(data.error){
+                $scope.messages = {
+                    error: Array.isArray(data.error)?data.error:[data.error]
+                }
+            }
             usSpinnerService.stop('singupSpinner');
             notificationService.error('Fallo el registro');
         });

@@ -28,6 +28,11 @@
             $uibModalInstance.close('cancelado el login');
         };
 
+        $scope.cerrar = function () {
+            console.log("cerrando");
+            $uibModalInstance.close('olvido contraseña');
+        };
+
         $rootScope.$on('userLoggedIn', function(){
             usSpinnerService.stop('loginSpinner');
             $uibModalInstance.close('close modal');
