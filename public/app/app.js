@@ -30,8 +30,9 @@
         };
 
         //commonConfig.redirectUri = 'http://localhost:3000/';
-        //commonConfig.redirectUri = window.location.origin + '/';
-        commonConfig.redirectUri = 'https://passalov2.herokuapp.com/';
+        commonConfig.redirectUri = window.location.origin + '/';
+        //http://passalov2.herokuapp.com/
+        //commonConfig.redirectUri = 'https://passalov2.herokuapp.com/';
         $authProvider.singupUrl = '/auth/signup';
         $authProvider.facebook(angular.extend({}, commonConfig, {
             clientId: '1770043263275650',
