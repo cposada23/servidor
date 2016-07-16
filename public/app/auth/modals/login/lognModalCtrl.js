@@ -16,10 +16,11 @@
         };
 
         $scope.authenticate = function (provider) {
+
+            console.log(window.location.origin + '/');
             console.log("autenticate "+ provider);
             usSpinnerService.spin('loginSpinner');
             UserService.authenticate(provider);
-
         };
 
         $scope.cancel = function () {
