@@ -46,15 +46,18 @@
             successSingup: function (response) {
                 $auth.setToken(response);
                 userData = $auth.getPayload();
+                notificationService.success('Autenticado');
                 $rootScope.$emit('userSingUp', {data: userData});
             },
             successSocialSingup: function () {
                 userData = $auth.getPayload();
+                notificationService.success('Autenticado');
                 $rootScope.$emit('userSingUp', {data: userData});
             },
-            failedAuth: function() {
+            failedAuth: function(error) {
                 userData = undefined;
-                $rootScope.$emit('userFailedLogin');
+                console.log("rror: " + JSON.stringify(error));
+                $rootScope.$emit('userFailedLogin' ,{error:error.data});
             },
             failedSingup: function (response) {
                 userData = undefined;

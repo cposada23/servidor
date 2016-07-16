@@ -20,6 +20,19 @@ module.exports = {
  * @param next
  */
 function localAuth(req, res, next) {
+
+    req.assert('email', 'El email no es valido ').isEmail();
+    req.assert('email', 'Llene el campo del email').notEmpty();
+    req.assert('password', 'Ingrese su contraseña').notEmpty();
+    req.sanitize('email').normalizeEmail({remove_dots:false});
+    var errors = req.validationErrors();
+    if(errors){
+        console.log("errors local auth" + JSON.stringify(errors));
+        return res.status(400).send(errors);
+        //return next({status:400,errors:errors});
+
+    }
+
     const options = {
         password: req.body.password,
         email: req.body.email
@@ -27,8 +40,9 @@ function localAuth(req, res, next) {
     console.log("Options en localAuth " + JSON.stringify(options));
     Local.localAuthentication(options, (err, user)=>{
         if(err || !user){
-            console.log("error en autcontrolerr local authentication");
-            return next({status: 401, err: 'User not found'});
+            console.log("error en autcontrolerr local authentication" +  JSON.stringify(err));
+            return res.status(401).send(err);
+            //return next({status: 401, err: 'User not found'});
         }
         req.user = user;
 
@@ -41,6 +55,8 @@ function localAuth(req, res, next) {
  */
 
 function localsingup(req, res,next){
+
+
     var datos = req.body;
     console.log("datos en auth controller local signup" +JSON.stringify(datos));
     Local.localSingUp(datos, function (err, user) {

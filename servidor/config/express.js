@@ -3,16 +3,17 @@
 /**
  * Module dependencies.
  */
-const express       = require('express');
-const compression   = require('compression');
-const bodyParser    = require('body-parser');
-const logger        = require('morgan');
-const errorHandler  = require('errorhandler');
-const lusca         = require('lusca');
-const dotenv        = require('dotenv');
-const path          = require('path');
-const mongoose      = require('mongoose');
-const cors          = require('cors');
+const express          = require('express');
+const compression      = require('compression');
+const bodyParser       = require('body-parser');
+const logger           = require('morgan');
+const errorHandler     = require('errorhandler');
+const lusca            = require('lusca');
+const dotenv           = require('dotenv');
+const path             = require('path');
+const mongoose         = require('mongoose');
+const cors             = require('cors');
+var   expressValidator = require('express-validator');
 
 const TokenService  = require('../auth/services/TokenService');
 const config        = require('./environment');
@@ -34,13 +35,18 @@ module.exports = function (app) {
      * Init body and cookie inside req
      * */
     app.use(bodyParser.json());
+    app.use(expressValidator());
     app.use(bodyParser.urlencoded({extended: true}));
+    /**
+     * Manejo de errores con express validator
+     */
 
+    //app.use(expressValidator());
 
     /**
      * Forzar HTTPS  en heroku
      */
-    if(proccess.env.HEROKU === 'heroku'){
+    if(process.env.HEROKU === 'heroku'){
         app.use(function(req, res, next) {
             var protocol = req.get('x-forwarded-proto');
             protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);

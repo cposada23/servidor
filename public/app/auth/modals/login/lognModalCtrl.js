@@ -30,13 +30,19 @@
 
         $rootScope.$on('userLoggedIn', function(){
             usSpinnerService.stop('loginSpinner');
-            notificationService.success('Autenticado on modal');
             $uibModalInstance.close('close modal');
         });
 
 
 
-        $rootScope.$on('userFailedLogin', function () {
+        $rootScope.$on('userFailedLogin', function (event , data) {
+
+            console.log('errorFaileLogin' + JSON.stringify(data));
+            if(data.error){
+                $scope.messages = {
+                    error: Array.isArray(data.error)?data.error:[data.error]
+                }
+            }
             console.log("failed login");
             notificationService.error('Error!!');
             usSpinnerService.stop('loginSpinner');

@@ -77,7 +77,6 @@
             loadUserData();
             console.log("user logged in homectrl");
             //usSpinnerService.stop('spinner-1');
-            notificationService.success('Autenticado homectrl');
         });
 
         $rootScope.$on('userSingUp', function(){

@@ -17,12 +17,12 @@ function localAuthentication(options, cb) {
             console.log("Usuario encontrado en localAuthenticate " + JSON.stringify(user));
             if(!user.authenticate(password)){
                 console.log("contraseña incorrecta en local authenticate");
-                return cb('Contraseña incorrecta');
+                return cb([{"param": "password", "msg":"Contraseña incorrecta"}]);
             }
             return cb(null, user);
         }else if(!user){
             console.log("El email no esta registrado localauthentication" );
-            return cb('El email no esta registrado')
+            return cb([{"params": "email" , "msg": "El email no esta registrado"}]);
         }
 
     });
@@ -30,6 +30,7 @@ function localAuthentication(options, cb) {
 
 
 function localSingUp(datos, cb) {
+    console.log("local singup");
     User.findOne({email: datos.email}, function (err, existinguser) {
         if(err){
             console.log("error retornando usuario en localSinngup");

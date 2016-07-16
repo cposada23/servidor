@@ -37,8 +37,8 @@
         $authProvider.facebook(angular.extend({}, commonConfig, {
             clientId: '1770043263275650',
 
-            url: 'https://passalov2.herokuapp.com/auth/facebook'
-            //url:'http://localhost:3000/auth/facebook'
+            //url: 'https://passalov2.herokuapp.com/auth/facebook'
+            url:'http://localhost:3000/auth/facebook'
         }));
     }
 }());
