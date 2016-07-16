@@ -7,6 +7,7 @@ const crypto        = require('crypto');
 const nodemailer    = require('nodemailer');
 const smtptransport= require('nodemailer-smtp-transport');
 const User = require('../../models/Usuario');
+var sgTransport = require('nodemailer-sendgrid-transport');
 
 module.exports = {
     facebookAuth,
@@ -163,34 +164,24 @@ function forgot(req, res) {
         if(!user) return res.status(400).send([{"param": "email", "msg":"El email no esta asociado a ninguna cuenta de passalo"}]);
 
         crypto.randomBytes(16,function (err, buf) {
+            console.log("por aqui")
             var token = buf.toString('hex');
-            var smtpTransport = require('nodemailer-smtp-transport');
 
-            var transporter = nodemailer.createTransport(smtpTransport({
-                service: 'gmail',
+
+            var options = {
                 auth: {
-                    user: 'cposadaa@gmail.com', // my mail
-                    pass: 'R3d-A19876'
-                }
-            }));
-
-            /*var  smtpconfig = {
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure:true,
-                auth:{
-                    user:'cposadaa@gmail.com',
-                    pass:'R3d-A19876'
+                    api_user: 'camilo.posadaa',
+                    api_key: 'CpA19876abc--'
                 }
             };
-            var transporter = nodemailer.createTransport(smtpconfig);*/
+
+            var transporter = nodemailer.createTransport(sgTransport(options));
+
+
+
+
             /*
             var transporter = nodemailer.createTransport({
-                service: 'Gmail',
-                auth:{
-                    user:'cposadaa@gmail.com',
-                    pass:'R3d-A19876'
-                }
 
                 service: 'Mailgun',
                 auth:{
@@ -199,15 +190,24 @@ function forgot(req, res) {
                 }
             });*/
 
-            var mailOptions = {
+           /* var email = {
+                from: 'awesome@bar.com',
+                to: user.email,
+                subject: 'Hello',
+                text: 'Hello world',
+                html: '<b>Hello world</b>'
+            };*/
+
+           var email = {
                 to: user.email,
                 from: 'postmaster@peiname.me',
-                subject:'Esta reciviendo este email poque usted o alguien mas a requerido recuperar la contraseña para su cuenta de passalo \n' +
+                subject:'Recuperar contraseña',
+                text: 'Esta reciviendo este email poque usted o alguien mas a requerido recuperar la contraseña para su cuenta de passalo \n' +
                 'Para completar el proceso ingrese al siguiente link\n\n'+
                 'http://'+req.header.host+'/reset/'+token+'\n\n'+
                 'Si nno fue usted el que requirio recuperar la contraseña, ignore este email y su contraseña no cambiara.\n'
             };
-            transporter.sendMail(mailOptions, function (err) {
+            transporter.sendMail(email, function (err) {
                 if(err){
                     console.log("error en transportersendmail " + err);
                     return res.status(400).send([{"param": "transporter", "msg":"Algo salio mal, intente de nuevo mas tarde"}]);
