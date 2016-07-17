@@ -28,7 +28,7 @@ module.exports = function (app) {
     app.use(cors({
         origin: '*',
         withCredentials: false,
-        allowedHeaders: ['Content-Type', 'Authorization','x-forwarded-for', 'X-Requested-With', 'Accept', 'Origin' ]
+        allowedHeaders: ['Content-Type', 'Authorization','x-forwarded-for', 'x-forwarded-proto','X-Requested-With', 'Accept', 'Origin' ]
     }));
 
     /**
