@@ -28,7 +28,7 @@ module.exports = function (app) {
     app.use(cors({
         origin: '*',
         withCredentials: false,
-        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin' ]
+        allowedHeaders: ['Content-Type', 'Authorization','x-forwarded-for', 'X-Requested-With', 'Accept', 'Origin' ]
     }));
 
     /**
@@ -41,7 +41,7 @@ module.exports = function (app) {
      * Manejo de errores con express validator
      */
 
-    //app.use(expressValidator());
+
 
     /**
      * Forzar HTTPS  en heroku

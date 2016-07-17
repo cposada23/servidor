@@ -3,11 +3,14 @@ const AuthModule    = require('../services/AuthModule');
 const Facebook      = require('../facebook/facebookAuth');
 const Local         = require('../local/localAuth');
 const TokenService  = require('../services/TokenService');
-const crypto        = require('crypto');
-const nodemailer    = require('nodemailer');
-const smtptransport= require('nodemailer-smtp-transport');
+//const crypto        = require('crypto');
+//const nodemailer    = require('nodemailer');
+const jwt           = require('jsonwebtoken');
+const Email         = require('./email.ctrl');
 const User = require('../../models/Usuario');
-var sgTransport = require('nodemailer-sendgrid-transport');
+
+
+
 
 module.exports = {
     facebookAuth,
@@ -15,7 +18,8 @@ module.exports = {
     localsingup,
     retrieveUser,
     generateToken,
-    forgot
+    forgot,
+    reset
 };
 
 
@@ -83,7 +87,6 @@ function localsingup(req, res,next){
         if(err || !user){
             console.log("error en autcontrolerr localsignup");
             return res.status(400).send(err);
-            //return next({status: 401, err: 'User not found'});
         }
         req.user = user;
 
@@ -112,9 +115,7 @@ function facebookAuth(req, res, next) {
             return next({err, status: 401});
         }
         console.log("ser authObject autentication controntroller");
-        // for larger apps recommended to namespace req variables
         req.authObject = response;
-
         next();
     });
 }
@@ -149,6 +150,7 @@ function retrieveUser(req, res, next) {
  * @param res
  */
 function forgot(req, res) {
+    console.log("llame a forgot desde " + req.headers.host);
     req.assert('email','Debe ingresar un email valido').isEmail();
     req.assert('email', 'Debe ingresar su emal').notEmpty();
     req.sanitize('email').normalizeEmail({remove_dots:false});
@@ -162,69 +164,71 @@ function forgot(req, res) {
     User.findOne({email:req.body.email}, function (err, user) {
         if(err) return res.status(400).send([{"param": "email", "msg":"Algo salio mal intente de nuevo mas tarde"}]);
         if(!user) return res.status(400).send([{"param": "email", "msg":"El email no esta asociado a ninguna cuenta de passalo"}]);
+        var u = {
+            firstName: user.firstName,
+            _id: user._id,
 
-        crypto.randomBytes(16,function (err, buf) {
-            console.log("por aqui")
-            var token = buf.toString('hex');
+        };
+        jwt.sign(u, process.env.TOKEN_SECRET, {
+            algorithm: 'HS256',
+            expiresIn: 300 // expira  en 5 minutos
+        }, function (err, token) {
+            console.log("Nueva token en jwtsing" + token );
+            user.resetToken = token;
+            user.save(function (err, user) {
+                if (err) return res.status(400).send([{"param": "transporter", "msg":"Algo salio mal, intente de nuevo mas tarde"}]);
+                var data = {
+                    token:token,
+                    name: user.firstName,
+                    email: user.email,
+                    host: req.headers.host
+                };
+                Email.sendEmail(data, function (err) {
+                    if(err)return res.status(400).send([{"param": "transporter", "msg":"Algo salio mal, intente de nuevo mas tarde"}]);
+
+                    return res.status(200).send([{"param": "trasnporter", "msg":"Se envio un email a " +user.email+" con instrucciones sobre como recuperar su contraseña"}]);
+                });
+            });
+        });
+    });
+}
 
 
-            var options = {
-                auth: {
-                    api_user: 'camilo.posadaa',
-                    api_key: 'CpA19876abc--'
-                }
-            };
+function reset(req, res, next) {
+    req.assert('password' , 'a contraseña no puede estar en blanco').notEmpty();
+    req.assert('confirm', 'Las contraseñas no coinciden').equals(req.body.password);
+    req.assert('password', ' la contraseña debe tener mas de 4 caracteres').len(4);
+    req.assert('token', 'No hay token o esta ya vencio').notEmpty();
 
-            var transporter = nodemailer.createTransport(sgTransport(options));
+    var errors = req.validationErrors();
 
-
-
-
-            /*
-            var transporter = nodemailer.createTransport({
-
-                service: 'Mailgun',
-                auth:{
-                    user:process.env.MAILGUN_USERNAME,
-                    pass:process.env.MAILGUN_PASSWORD
-                }
-            });*/
-
-           /* var email = {
-                from: 'awesome@bar.com',
-                to: user.email,
-                subject: 'Hello',
-                text: 'Hello world',
-                html: '<b>Hello world</b>'
-            };*/
-
-           var email = {
-                to: user.email,
-                from: 'postmaster@peiname.me',
-                subject:'Recuperar contraseña',
-                text: 'Esta reciviendo este email poque usted o alguien mas a requerido recuperar la contraseña para su cuenta de passalo \n' +
-                'Para completar el proceso ingrese al siguiente link\n\n'+
-                'http://'+req.header.host+'/reset/'+token+'\n\n'+
-                'Si nno fue usted el que requirio recuperar la contraseña, ignore este email y su contraseña no cambiara.\n'
-            };
-            transporter.sendMail(email, function (err) {
-                if(err){
-                    console.log("error en transportersendmail " + err);
-                    return res.status(400).send([{"param": "transporter", "msg":"Algo salio mal, intente de nuevo mas tarde"}]);
-
-                } return res.status(200).send([{"param": "trasnporter", "msg":"Se envio un email a " +user.email+" con instrucciones sobre como recuperar su contraseña"}]);
+    if (errors){
+        console.log("errors en reset");
+        return res.status(400).send(errors);
+    }
+    var id;
+    try {
+        id  = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+        console.log("id: " + JSON.stringify(id));
+        User.findOne({_id:id._id}, function (err, user) {
+            if(err)return res.status(401).send([{"params":"User", "msg":"Token invalida o a expirado" }]);
+            console.log("usuario encontrado " + user.firstName);
+            if(!(user.resetToken===req.body.token)){
+                return res.status(401).send([{"params":"User", "msg":"Token invalida o a expirado" }]);
+            }
+            user.password = req.body.password;
+            user.resetToken = undefined;
+            user.save(function (err, user) {
+                if(err)return res.status(400).send([{"params":"User", "msg":"Algo salio mal, no se pudo cambiar la contraseña" }]);
+                return res.status(200).send([{"params":"User", "msg":"Contraseña cambiada exitosamente. Ingrese con su nueva contraseña"}]);
             });
 
         });
-
-
-
-
-
-    });
-
+    } catch (err) {
+        console.log(err);
+        return res.status(401).send([{"param": "token", "msg":"La token expiro, no se pudo cambiar la contaseña"}]);
+    }
 }
-
 
 function generateToken(req, res, next) {
     console.log("generando token en auth controller");

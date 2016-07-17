@@ -6,7 +6,6 @@ const router = express.Router();
  * Social auth
  */
 router.use('/facebook' , authCtrl.facebookAuth, authCtrl.retrieveUser, authCtrl.generateToken, (req, res) => {
-    console.log("Todo correcto devolviendo la token en auth index.js");
     res.json({token: req.generatedToken});
 });
 
@@ -23,9 +22,11 @@ router.use('/signup', authCtrl.localsingup, authCtrl.generateToken,(req, res)=>{
     res.json({token: req.generatedToken});
 });
 
-
+/**
+ * recuperar contraseña
+ */
 router.use('/forgot', authCtrl.forgot);
-
+router.use('/reset', authCtrl.reset);
 
 
 module.exports = router;

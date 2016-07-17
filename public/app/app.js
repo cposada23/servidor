@@ -25,6 +25,11 @@
                 url:'/forgot',
                 templateUrl:'public/app/auth/forgot/forgot.html',
                 controller: 'forgotCtrl as forgot'
+            })
+            .state('Reset',{
+                url:'/reset/:token',
+                templateUrl:'public/app/auth/reset/reset.html',
+                controller:'resetCtrl as reset'
             });
 
         var commonConfig = {

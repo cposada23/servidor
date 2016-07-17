@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     salt: String,
     displayName: {type: String, unique:true},
     rol: {type:String, default:'user'},
+    resetToken: String,
     profiles: {
         local:{type:Boolean, default:false},
         facebook: String,
