@@ -45,6 +45,7 @@ function createOrRetrieveUser(options, cb) {
         }
         else {
             console.log("No se encontro el usuario con el email " + query1.email);
+            console.log("creando usuario "+ JSON.stringify(options.user));
             createUser(options.user, cb);
         }
     });
@@ -67,7 +68,15 @@ function createOrRetrieveUser(options, cb) {
  * @param cb
  */
 function createUser(user, cb) {
+    console.log("usuario en create user" +  JSON.stringify(user));
     const newUser = new User(user);
 
-    newUser.save(cb);
+    //newUser.save(cb);
+    newUser.save(function (err, user) {
+        if(err){
+            console.log("error guardando el usuario en create user");
+            return cb(err);
+        }console.log("usuario guardado en create user ");
+        return cb(null, user);
+    });
 }

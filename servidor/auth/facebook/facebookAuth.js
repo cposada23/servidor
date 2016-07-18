@@ -49,6 +49,7 @@ function facebookAuthentication(options, cb) {
                     facebook: profile.id
                 },
                 rol:'user',
+                displayName:'',
                 email: profile.email,
                 token: accessToken
             };

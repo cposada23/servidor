@@ -30,7 +30,8 @@ function sendEmail(data, cb) {
     var transporter = nodemailer.createTransport(sgTransport(options));
     var link = 'http://'+data.host+'#/reset/'+data.token;
     var html_body = "<table style=\"border: solid 1px #000; background-color: #2e2e2e; font-family: verdana, tahoma, sans-serif; color: #fff;\"><tr> <td> <h2>Hola,</h2> <p>Has recibido este e-mail porque has solicitado recuperar la contraseña. Para continuar con el proceso da clic en el siguiente link:  <br/> </p> <a href="+link+ ">Recuperar Contraseña</a> <p>Estamos para servir</p> <p>Tus amigos de passalo</p> <p> <img src=\"http://cdn1.sendgrid.com/images/sendgrid-logo.png\" alt=\"SendGrid!\" /> </p></td> </tr> </table>";
-    var to_s = "cposadaa@gmail.com";
+    //var to_s = "cposadaa@gmail.com";
+    var to_s = data.email;
     var email = {
         to: to_s,
         from: from_address,

@@ -10,16 +10,14 @@
         vm.forgotPassword = function () {
             console.log("forgot pass");
             $http.post('/auth/forgot', vm.user).success(function (response) {
-                console.log("response " + JSON.stringify(response) );
                 vm.messages={
                     success:Array.isArray(response)?response:[response]
                 }
             }).error(function (error) {
-                console.log("Error " + JSON.stringify(error));
                 vm.messages = {
                     error: Array.isArray(error)?error:[error]
                 }
-            })
+            });
         }
     }
 }());

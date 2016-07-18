@@ -33,7 +33,6 @@
             logOut: function() {
                 $auth.logout();
                 userData = undefined;
-
                 $rootScope.$emit('userLoggedOut');
             },
             getUser: function(){
@@ -56,7 +55,6 @@
             },
             failedAuth: function(error) {
                 userData = undefined;
-                console.log("rror: " + JSON.stringify(error));
                 $rootScope.$emit('userFailedLogin' ,{error:error.data});
             },
             failedSingup: function (response) {

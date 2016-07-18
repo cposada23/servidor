@@ -10,55 +10,37 @@
                     <div ng-repeat="error in messages.error">{{error.msg}}</div>
                 </div>
                 <form method="post" ng-submit="signup()" name="signupForm" novalidate >
-                    <div class="form-group has-feedback" ng-class="{'has-error': signupForm.displayName.$invalid && singupForm.displayName.$dirty}">
+                    <div class="form-group has-feedback" >
                         <input class="form-control input-lg" type="text" name="displayName" ng-model="user.displayName" placeholder="userName" required autofocus>
                         <span  class="ion-person form-control-feedback"></span>
-                        <div class="help-block text-danger" ng-if="singupForm.displayName.$dirty" ng-messages="singupForm.displayName.$error">
-                            <div ng-messsage="required">Debe digitar su nombre de usuario</div>
-                        </div>
                     </div>
 
-                    <div class="form-group has-feedback" ng-class="{'has-error': signupForm.email.$invalid && singupForm.email.$dirty}">
+                    <div class="form-group has-feedback">
                         <input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" placeholder="email" required>
                         <span  class="ion-at form-control-feedback"></span>
-                        <div class="help-block text-danger" ng-if="singupForm.email.$dirty" ng-messages="singupForm.email.$error">
-                            <div ng-message="required">Debe digitar su email</div>
-                            <div ng-message="pattern">Ingese un email valido</div>
-                        </div>
                     </div>
 
-                    <div class="form-group has-feedback" ng-class="{'has-error': signupForm.name.$invalid && singupForm.name.$dirty}">
+                    <div class="form-group has-feedback" >
                         <input class="form-control input-lg" type="text" id="name" name="name" ng-model="user.firstName" placeholder="Nombre" required>
                         <span  class="ion-at form-control-feedback"></span>
-                        <div class="help-block text-danger" ng-if="singupForm.name.$dirty" ng-messages="singupForm.name.$error">
-                            <div ng-message="required">Debe digitar su nombre</div>
-                        </div>
                     </div>
 
-                    <div class="form-group has-feedback" ng-class="{'has-error': signupForm.apellido.$invalid && singupForm.apellido.$dirty}">
+                    <div class="form-group has-feedback" >
                         <input class="form-control input-lg" type="text" id="apellido" name="apellido" ng-model="user.lastName" placeholder="apellido" required>
                         <span  class="ion-at form-control-feedback"></span>
-                        <div class="help-block text-danger" ng-if="singupForm.apellido.$dirty" ng-messages="singupForm.apellido.$error">
-                            <div ng-message="required">Debe digitar su apellido</div>
-                        </div>
+
                     </div>
 
-                    <div class="form-group has-feedback" ng-class="{'has-error': signupForm.password.$invalid && singupForm.password.$dirty}">
+                    <div class="form-group has-feedback" >
                         <input class="form-control input-lg" type="password" id="password" name="password" ng-model="user.password" placeholder="contraseña" required>
                         <span  class="ion-at form-control-feedback"></span>
-                        <div class="help-block text-danger" ng-if="singupForm.password.$dirty" ng-messages="singupForm.password.$error">
-                            <div ng-message="required">Debe digitar su contraseña</div>
-                        </div>
+
                     </div>
 
                     <div class="form-group has-feedback">
                         <input class="form-control input-lg" type="password" id="confirm" name="confirm" ng-model="user.confirm" placeholder="confirmar contraseña" required>
                         <span  class="ion-at form-control-feedback"></span>
-
                     </div>
-
-
-
                     <p class="text-center text-muted"><small>Al dar click en registrar, usted acepta los <a href="#">Terminos y Condiciones</a></small></p>
                     <button type="submit" ng-disabled="singupForm.$invalid" class="btn btn-lg btn-block btn-primary" ng-click="singup()">Registrar</button>
                     <br/>
@@ -66,6 +48,7 @@
                 </form>
                 <span us-spinner="{radious:30, width:8, length:16}" spinner-key="singupSpinner"></span>
                 <button class="btn btn-facebook  btn-lg btn-block" ng-click="authenticate('facebook')">Registro con Facebook</button>
+                <button class="btn btn-google  btn-lg btn-block" ng-click="authenticate('google')">Registro con Google</button>
             </div>
         </div>
     </div>

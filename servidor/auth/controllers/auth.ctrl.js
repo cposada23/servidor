@@ -1,6 +1,7 @@
 'use strict';
 const AuthModule    = require('../services/AuthModule');
 const Facebook      = require('../facebook/facebookAuth');
+const Google        = require('../google/googleAuth');
 const Local         = require('../local/localAuth');
 const TokenService  = require('../services/TokenService');
 //const crypto        = require('crypto');
@@ -14,6 +15,7 @@ const User = require('../../models/Usuario');
 
 module.exports = {
     facebookAuth,
+    googleAuth,
     localAuth,
     localsingup,
     retrieveUser,
@@ -120,6 +122,26 @@ function facebookAuth(req, res, next) {
     });
 }
 
+
+function googleAuth(req, res, next) {
+    const options = {
+        code: req.body.code,
+        clientId: req.body.clientId,
+        redirectUri: req.body.redirectUri
+    };
+
+    Google.googleAuthentication(options,(err,response)=>{
+        if(err){
+            console.log("Error en google Authentication");
+            return next({err, status:401});
+        }
+        req.authObject = response;
+        next();
+    });
+
+
+}
+
 function retrieveUser(req, res, next) {
     if(!req.authObject) {
         console.log("No hay Auth object en aut controller");
@@ -142,6 +164,8 @@ function retrieveUser(req, res, next) {
         next();
     });
 }
+
+
 
 
 /**

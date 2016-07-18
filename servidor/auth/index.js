@@ -9,6 +9,10 @@ router.use('/facebook' , authCtrl.facebookAuth, authCtrl.retrieveUser, authCtrl.
     res.json({token: req.generatedToken});
 });
 
+router.use('/google', authCtrl.googleAuth, authCtrl.retrieveUser, authCtrl.generateToken,(req,res)=>{
+    res.json({token: req.generatedToken});
+});
+
 
 /**
  * local Auth

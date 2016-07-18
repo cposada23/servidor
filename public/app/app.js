@@ -39,16 +39,16 @@
             }
         };
 
-        //commonConfig.redirectUri = 'http://localhost:3000/';
         commonConfig.redirectUri = window.location.origin + '/';
-        //http://passalov2.herokuapp.com/
-        //commonConfig.redirectUri = 'https://passalov2.herokuapp.com/';
         $authProvider.singupUrl = '/auth/signup';
         $authProvider.facebook(angular.extend({}, commonConfig, {
             clientId: '1770043263275650',
-
-            url: 'https://passalov2.herokuapp.com/auth/facebook'
-            //url:'http://localhost:3000/auth/facebook'
+            //url: 'https://passalov2.herokuapp.com/auth/facebook'
+            url:'http://localhost:3000/auth/facebook'
+        }));
+        $authProvider.google(angular.extend({} , commonConfig, {
+            clientId:'989693237495-06ds26e4gjdbuufstannd2jvltpvir24.apps.googleusercontent.com',
+            //url: 'https://passalov2.herokuapp.com/auth/google'
         }));
     }
 }());

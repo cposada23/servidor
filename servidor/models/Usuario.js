@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     pictures:[{type:String}],
     hashedPassword:String,
     salt: String,
-    displayName: {type: String, unique:true},
+    displayName: {type: String},
     rol: {type:String, default:'user'},
     resetToken: String,
     profiles: {
@@ -17,8 +17,7 @@ const userSchema = new mongoose.Schema({
         google: String,
         twiter: String,
 
-    },
-    tokens: Array
+    }
 }, { timestamps: true });
 
 //Virtuals
