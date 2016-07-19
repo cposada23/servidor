@@ -8,14 +8,14 @@ const userSchema = new mongoose.Schema({
     pictures:[{type:String}],
     hashedPassword:String,
     salt: String,
-    displayName: {type: String},
+    displayName: String,
     rol: {type:String, default:'user'},
     resetToken: String,
     profiles: {
         local:{type:Boolean, default:false},
         facebook: String,
         google: String,
-        twiter: String,
+        twitter: String,
 
     }
 }, { timestamps: true });

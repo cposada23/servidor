@@ -142,6 +142,7 @@ function googleAuth(req, res, next) {
 
 }
 
+
 function retrieveUser(req, res, next) {
     if(!req.authObject) {
         console.log("No hay Auth object en aut controller");

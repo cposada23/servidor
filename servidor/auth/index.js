@@ -1,6 +1,6 @@
 const express  = require('express');
 const authCtrl = require('./controllers/auth.ctrl');
-
+const twiterAuth = require('./twitter/twitterAuth');
 const router = express.Router();
 /**
  * Social auth
@@ -13,6 +13,10 @@ router.use('/google', authCtrl.googleAuth, authCtrl.retrieveUser, authCtrl.gener
     res.json({token: req.generatedToken});
 });
 
+
+router.use('/twitter', twiterAuth.twiterAuthentication, authCtrl.retrieveUser, authCtrl.generateToken,(req, res)=>{
+    res.json({token:req.generatedToken});
+});
 
 /**
  * local Auth
