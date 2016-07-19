@@ -13,7 +13,7 @@ const mongoose      = require('mongoose');
 /**
  * Cargar las variables de entorno del archivo .env, donde estan las keys y contraseñas
  */
-dotenv.load({ path: 'servidor/.env' });
+//dotenv.load({ path: 'servidor/.env' });
 
 /**
  * Configuración de la app
