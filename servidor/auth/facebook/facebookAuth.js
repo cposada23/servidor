@@ -25,22 +25,21 @@ function facebookAuthentication(options, cb) {
         client_secret: process.env.FACEBOOK_SECRET
     };
 
-    // Step 1. Exchange authorization code for access token.
+    // Paso 1. Cambio del codigo de autorización por el access Token
     request.get({url: accessTokenUrl, qs: params, json: true}, (err, response, accessToken) => {
         if(response.statusCode !== 200) {
             console.log("error linea 31 facebok atuh");
             return cb(accessToken.error.message);
         }
 
-        // Step 2. Retrieve profile information about the current user.
+        // Paso 2. Retornar la informacion del perfil del usuario.
         request.get({url: graphApiUrl, qs: accessToken, json: true}, (err, response, profile) => {
             if(response.statusCode !== 200){
                 console.log("error linea 38 facebook auth");
                 return cb(accessToken.error.message);
             }
 
-            // Here we will normalize facebook response to our user schema
-            // So later we can use multiple providers
+            // Normalizo la respuesta de facebook acorde a mi modelo de usuario
             const user = {
                 profilePicture: `https://graph.facebook.com/${profile.id}/picture?type=large`,
                 firstName: profile.first_name,
